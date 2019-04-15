@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Newsletter</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<!--/*@thymesVar id="personalInfo" type="java.util.List"*/-->
+<!--/*@thymesVar id="persDetail" type="com.test.newsletter.data.PersonalInformationData"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-1">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h1 class="panel-title">Newsletter</h1>
+                </div>
+                <a th:href="@{/}">
+                    <div class="btn btn-default">New subscriber</div>
+                </a>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(personalInfo)}">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Email</th>
+                            </tr>
+                            <tr th:each="persDetail : ${personalInfo}">
+                                <td th:text="${persDetail.firstName}">1</td>
+                                <td th:text="${persDetail.lastName}"></td>
+                                <td th:text="${persDetail.email}"></td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
